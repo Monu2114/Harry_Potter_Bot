@@ -1,5 +1,6 @@
 import { convertToModelMessages, streamText, UIMessage } from "ai";
 import { createClient } from "@supabase/supabase-js";
+export const runtime = "nodejs";
 
 // Allow streaming responses up to 30 seconds
 function extractTextFromParts(parts) {
@@ -27,7 +28,7 @@ export async function POST(req) {
 
   console.log("QUERY:", query, typeof query);
 
-  const res = await fetch("http://localhost:8000/embed", {
+  const res = await fetch("http://98.92.124.241:8000/embed", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text: query }),
@@ -47,6 +48,7 @@ export async function POST(req) {
   });
   console.log("RPC DATA:", data);
   console.log("RPC ERROR:", error);
+  if (error) return;
   const context = data.map((row) => row.content).join("\n\n");
 
   const result = streamText({

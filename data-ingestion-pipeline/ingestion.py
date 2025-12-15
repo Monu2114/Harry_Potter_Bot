@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 import os
 from supabase import create_client, Client
 load_dotenv()
-model = SentenceTransformer("google/embeddinggemma-300m")
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 url: str = os.environ.get("SUPABASE_URL")
@@ -32,8 +32,8 @@ for file in files:
         embeddings=model.encode(chunk).tolist()
         rows.append({"content": chunk, "embedding": embeddings})
         if(len(rows)==50):
-            supabase.table("documents").insert(rows).execute()
+            supabase.table("docs").insert(rows).execute()
             rows=[]
 if rows:
-    supabase.table("documents").insert(rows).execute()
+    supabase.table("docs").insert(rows).execute()
         

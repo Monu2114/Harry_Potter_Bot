@@ -13,11 +13,15 @@ export default function Page() {
   const [input, setInput] = useState("");
   return (
     <div className="bg-teal-50 h-fit">
-      <div className="p-12 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-center">
-          Chat cheyalani unda...💞{" "}
+      <img
+        className="h-screen w-screen absolute opacity-60"
+        src="https://www.hogwartslegacy.com/images/share.jpg"
+      ></img>
+      <div className="p-12 flex flex-col">
+        <h1 className="text-5xl font-bold text-center cursive">
+          𝑾𝑬𝑳𝑪𝑶𝑴𝑬 𝑻𝑶 𝑯𝑶𝑮𝑾𝑨𝑹𝑻𝑺
         </h1>
-        <div className="border-gray-200 border-2 rounded-xl mt-12 p-8 w-1/2 flex flex-col">
+        <div className="border-black border-3 rounded-xl mt-12 p-8 w-1/4 flex flex-col absolute min-h-56">
           {messages.map((message) => (
             <div
               key={message.id}

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 app = FastAPI()
-model = SentenceTransformer("google/embeddinggemma-300m")
+model = SentenceTransformer("all-MiniLM-L6-v2")
 class EmbedRequest(BaseModel):
     text: str
 
